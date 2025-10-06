@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=socialsyncapp
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+  backend:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/socialsyncapp?schema=public
+      - JWT_SECRET=your-super-secret-jwt-key
+      - RUSTORE_PRIVATE_KEY=${RUSTORE_PRIVATE_KEY}
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

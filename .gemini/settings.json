@@ -1,0 +1,49 @@
+{
+  "tools": {
+    "autoAccept": false,
+    "sandbox": false
+  },
+  "model": {
+    "chatCompression": {
+      "contextPercentageThreshold": 0.6
+    }
+  },
+  "general": {
+    "checkpointing": {
+      "enabled": true
+    },
+    "vimMode": true
+  },
+  "ui": {
+    "customThemes": {
+      "MyCustomTheme": {
+        "name": "MyCustomTheme",
+        "type": "custom",
+        "Background": "#181818",
+        "Foreground": "#F8F8F2",
+        "LightBlue": "#82AAFF",
+        "AccentBlue": "#61AFEF",
+        "AccentPurple": "#C678DD",
+        "AccentCyan": "#56B6C2",
+        "AccentGreen": "#98C379",
+        "AccentYellow": "#E5C07B",
+        "AccentRed": "#E06C75",
+        "Comment": "#5C6370",
+        "Gray": "#ABB2BF"
+      }
+    },
+    "theme": "GitHub"
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true
+    },
+    "includeDirectories": [
+      "../shared-library",
+      "~/common-utils"
+    ]
+  },
+  "privacy": {
+    "usageStatisticsEnabled": true
+  }
+}
