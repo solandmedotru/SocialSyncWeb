@@ -12,8 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import Image from "next/image";
-
 export default function AuthButton() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -28,15 +26,7 @@ export default function AuthButton() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
-              {session.user?.image && (
-                <Image
-                  src={session.user.image}
-                  alt="User avatar"
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                />
-              )}
+              <AvatarImage src={session.user?.image || undefined} alt="User avatar" />
               <AvatarFallback>
                 {session.user?.email?.[0].toUpperCase()}
               </AvatarFallback>

@@ -24,18 +24,21 @@ const handler = NextAuth({
             }
           );
 
+          console.log("Backend response:", data); // DEBUG
           if (data.success && data.data.token) {
             // The user object we return here will be encoded in the JWT
-            return {
+            const user = {
               id: data.data.id,
               email: data.data.email,
               jwt: data.data.token,
             };
+            console.log("Authorize successful, returning user:", user); // DEBUG
+            return user;
           }
           return null;
-        } catch (e) {
+        } catch (e: any) {
           // Log the error and return null
-          console.error("Login Error:", e);
+          console.error("Login Error:", e.response?.data || e.message);
           return null;
         }
       },

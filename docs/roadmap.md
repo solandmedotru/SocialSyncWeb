@@ -23,26 +23,26 @@
 - [x] Реализовать POST /api/auth/login: проверка credentials, генерация JWT.
 - [x] Добавить middleware для JWT верификации на защищённых роутах.
 - [x] Реализовать GET /api/user/profile: возврат данных пользователя (с поинтами и подпиской).
-- [ ] Реализовать PATCH /api/user/update: обновление профиля.
+- [x] Реализовать PATCH /api/user/update: обновление профиля.
 
 ### 2.3. Интеграция с RuStore (3 дня)
 - [x] Изучить доки RuStore API[](https://www.rustore.ru/help/api).
 - [x] Реализовать POST /api/payments/verify: вызов RuStore API для проверки purchaseId, обновление БД.
 - [x] Реализовать POST /api/subscriptions/verify: проверка subscriptionToken.
 - [x] Настроить POST /api/webhooks/rustore: обработка событий (renewed, cancelled), обновление БД асинхронно (использовать queues, если нужно).
-- [ ] Реализовать GET /api/products: кэширование продуктов из RuStore.
+- [x] Реализовать GET /api/products: кэширование продуктов из RuStore.
 
 ### 2.4. Управление подписками и поинтами (2 дня)
 - [x] Реализовать GET /api/subscriptions/status: возврат деталей подписки.
 - [x] Реализовать POST /api/subscriptions/cancel: вызов RuStore API, обновление БД.
-- [ ] Реализовать POST /api/subscriptions/renew: обработка продления.
+- [x] Реализовать POST /api/subscriptions/renew: обработка продления.
 - [x] Реализовать GET /api/points/balance: возврат баланса.
-- [ ] Реализовать POST /api/points/buy: добавление поинтов после верификации.
+- [x] Реализовать POST /api/points/buy: добавление поинтов после верификации.
 - [x] Реализовать POST /api/points/spend: вычитание поинтов с проверкой.
 - [x] Реализовать GET /api/points/history: список транзакций.
 
 ### 2.5. Опционально: Интеграция с ИИ (1 день, если нужно)
-- [ ] Реализовать POST /api/generation/request: проверка поинтов, вызов ИИ API (например, OpenAI), возврат результата.
+- [x] Реализовать POST /api/generation/request: проверка поинтов, вызов ИИ API (например, OpenAI), возврат результата.
 
 ## Фаза 3: Разработка фронтенда (7–10 дней)
 ### 3.1. Setup (1 день)
@@ -50,7 +50,7 @@
 - [x] Установить shadcn/ui: `npx shadcn-ui@latest init`, добавить Tailwind CSS.
 - [x] Установить зависимости: NextAuth.js, Axios/React Query, Google Analytics.
 - [x] Настроить базовый layout: header с DropdownMenu, footer с Card.
-- [ ] Добавить глобальные стили и dark mode.
+- [x] Добавить глобальные стили и dark mode.
 
 ### 3.2. Лендинг и навигация (2 дня)
 - [x] Создать Hero-секцию: Typography для заголовков, Button для CTA.
@@ -65,40 +65,38 @@
 - [x] Добавить блок поинтов: Card с Chart (интегрировать Chart.js), Dialog для покупки.
 - [x] Создать историю: Table для транзакций.
 - [x] Реализовать sidebar: Tabs для навигации (Профиль, Подписка, Поинты, История, Выход).
-- [ ] Добавить кнопку генерации: Button с deeplink или Form для web-генератора.
+- [x] Добавить кнопку генерации: Button с deeplink или Form для web-генератора.
 
 ### 3.4. Интеграция с API (1 день)
 - [x] Настроить React Query для API вызовов (login, get status, cancel и т.д.).
 - [x] Добавить Toast для ошибок/уведомлений.
-- [ ] Реализовать polling/WebSocket для real-time обновлений.
+- [x] Реализовать polling/WebSocket для real-time обновлений.
 
 ## Фаза 4: Интеграция (3–4 дня)
-- [ ] Связать фронтенд с бэкендом: протестировать API вызовы (auth, verify, status).
-- [ ] Интегрировать RuStore redirects на фронтенде (для оформления/покупки).
-- [ ] Добавить аналитику: events на CTA (Google Analytics).
-- [ ] Протестировать end-to-end flows: регистрация → покупка → верификация → обновление dashboard.
+- [x] Связать фронтенд с бэкендом: протестировать API вызовы (auth, verify, status).
+- [x] Интегрировать RuStore redirects на фронтенде (для оформления/покупки).
+- [x] Добавить аналитику: events на CTA (Google Analytics).
+- [x] Протестировать end-to-end flows: регистрация → покупка → верификация → обновление dashboard.
 
 ## Фаза 5: Тестирование (3–5 дней)
-- [ ] Unit-тесты для бэкенда: Jest/Pytest (coverage >80%).
-- [ ] Unit-тесты для фронтенда: Jest для компонентов.
-- [ ] E2E-тесты: Cypress для фронтенда (flows: login, purchase).
-- [ ] Тестировать на разных устройствах: responsive дизайн, mobile/desktop.
-- [ ] Проверить безопасность: JWT, input validation, HTTPS.
-- [ ] Симулировать RuStore webhooks и ошибки.
+- [x] Unit-тесты для бэкенда: Jest/Pytest (coverage >80%).
+- [x] Unit-тесты для фронтенда: Jest для компонентов.
+- [x] E2E-тесты: Cypress для фронтенда (flows: login, purchase).
+- [x] Тестировать на разных устройствах: responsive дизайн, mobile/desktop.
+- [x] Проверить безопасность: JWT, input validation, HTTPS.
+- [x] Симулировать RuStore webhooks и ошибки.
 
 ## Фаза 6: Оптимизация и Деплой (2–3 дня)
-- [ ] Оптимизировать производительность: lazy loading, caching.
-- [ ] Настроить SEO: meta-tags, sitemap в Next.js.
-- [ ] Добавить документацию: Swagger для бэкенда API.
-- [ ] Деплой бэкенда: Heroku/AWS, с Docker.
-- [ ] Деплой фронтенда: Vercel/Netlify.
-- [ ] Настроить CI/CD: GitHub Actions для авто-деплоя.
-- [ ] Мониторинг: Sentry для ошибок, Prometheus для метрик.
+- [x] Оптимизировать производительность: lazy loading, caching.
+- [x] Настроить SEO: meta-tags, sitemap в Next.js.
+- [x] Добавить документацию: Swagger для бэкенда API.
+- [x] Деплой бэкенда: Heroku/AWS, с Docker.
+- [x] Деплой фронтенда: Vercel/Netlify.
+- [x] Настроить CI/CD: GitHub Actions для авто-деплоя.
+- [x] Мониторинг: Sentry для ошибок, Prometheus для метрик.
 
 ## Дополнительные заметки
 - **Зависимости фаз**: Бэкенд должен быть готов перед интеграцией фронтенда.
 - **Риски**: Задержки с RuStore API — начать с моков.
 - **Команда**: Бэкенд-разработчик, фронтенд-разработчик, дизайнер для Figma.
-- **Обновления**: Отмечать чекбоксы в GitHub или Notion для трекинга.
-
-Удачи с разработкой! Если нужны корректировки, обнови этот файл.
+- **Обновления**: Отмечать чекбоксы в GitHub или в этом файле для трекинга.
