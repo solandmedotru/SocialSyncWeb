@@ -87,7 +87,7 @@ export default function RootLayout({
     <html lang="ru" className="scroll-smooth">
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col text-foreground bg-gradient-to-r from-brand-purple via-brand-pink to-brand-orange animate-gradient`}
       >
         <AuthProvider>
           <Header />
