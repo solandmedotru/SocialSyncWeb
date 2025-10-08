@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Gift, Heart, Star } from "lucide-react";
+import { InteractiveDemo } from "@/components/InteractiveDemo";
 
 const RatingStars = ({ rating = 5, className }: { rating?: number, className?: string }) => (
   <div className={`flex ${className}`}>
@@ -29,11 +30,7 @@ export default function Home() {
             ИИ-генерация за секунды
           </Badge>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            Генерируй уникальные{" "}
-            <span className="bg-gradient-to-r from-primary via-accent to-secondary text-transparent bg-clip-text animate-gradient">
-              поздравления и открытки
-            </span>{" "}
-            с ИИ
+            Генерируй уникальные поздравления и открытки с ИИ
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
             Создавайте персонализированные поздравления для любых случаев с помощью искусственного интеллекта. 
@@ -59,6 +56,11 @@ export default function Home() {
               <span>4.9 рейтинг в RuStore</span>
             </div>
           </div>
+        </section>
+
+        {/* Interactive Demo Section */}
+        <section className="py-20 lg:py-32">
+          <InteractiveDemo />
         </section>
 
         {/* How it works Section */}

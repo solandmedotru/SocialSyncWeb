@@ -4,6 +4,7 @@ import "./globals.css";
 import AuthProvider from "@/components/AuthProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -87,15 +88,22 @@ export default function RootLayout({
     <html lang="ru" className="scroll-smooth">
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col text-foreground bg-gradient-to-r from-brand-purple via-brand-pink to-brand-orange animate-gradient`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col text-foreground bg-background`}
       >
-        <AuthProvider>
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </AuthProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

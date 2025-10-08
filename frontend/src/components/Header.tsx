@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, X, Sparkles } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,8 +60,9 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <AuthButton />
-            <Button 
+            <Button
               className="bg-gradient-to-r from-brand-purple to-brand-pink text-white hover:shadow-lg transition-all duration-300 hover:scale-105"
               asChild
             >
@@ -120,8 +122,11 @@ export default function Header() {
                 Кабинет
               </Link>
               <div className="flex flex-col gap-3 pt-4 border-t">
-                <AuthButton />
-                <Button 
+                <div className="flex items-center justify-between">
+                  <AuthButton />
+                  <ThemeToggle />
+                </div>
+                <Button
                   className="bg-gradient-to-r from-brand-purple to-brand-pink text-white w-full"
                   asChild
                 >

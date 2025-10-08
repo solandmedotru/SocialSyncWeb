@@ -50,9 +50,13 @@ import {
   Crown,
   Download,
   Eye,
-  Check
+  Check,
+  BookHeart,
+  Star as StarIcon,
+  CalendarDays
 } from "lucide-react";
 import Image from "next/image";
+import { EventCalendar } from "@/components/EventCalendar";
 
 export default function DashboardPage() {
   const [pointsBalance] = useState(150);
@@ -71,6 +75,12 @@ export default function DashboardPage() {
     { id: 5, date: "28.09.2025", type: "purchase", description: "Покупка поинтов", amount: "+500", status: "completed" },
   ];
 
+  const [generatedItems, setGeneratedItems] = useState([
+   { id: 1, date: "04.10.2025", type: "Поздравление", occasion: "День рождения", recipient: "Анна", text: "Дорогая Анна! Поздравляю с днем рождения! Желаю...", isFavorite: true },
+   { id: 2, date: "03.10.2025", type: "Открытка", occasion: "Новый Год", recipient: "Коллеги", text: "Уважаемые коллеги! Поздравляю вас с наступающим Новым...", isFavorite: false },
+   { id: 3, date: "02.10.2025", type: "Поздравление", occasion: "Свадьба", recipient: "Иван и Мария", text: "Дорогие Иван и Мария! Примите наши самые искренние...", isFavorite: false },
+  ]);
+
   const pointPackages = [
     { points: 100, price: "99", bonus: 0 },
     { points: 500, price: "399", bonus: 50 },
@@ -81,6 +91,12 @@ export default function DashboardPage() {
     const dailyLimit = 5;
     return Math.min((pointsBalance / dailyLimit) * 100, 100);
   };
+
+  const toggleFavorite = (id: number) => {
+   setGeneratedItems(generatedItems.map(item =>
+     item.id === id ? { ...item, isFavorite: !item.isFavorite } : item
+   ));
+ };
 
   return (
     <div className="container mx-auto py-20">
@@ -141,10 +157,18 @@ export default function DashboardPage() {
       </div>
 
       <Tabs defaultValue="profile" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="profile" className="flex items-center gap-2">
             <User className="w-4 h-4" />
             Профиль
+          </TabsTrigger>
+          <TabsTrigger value="generations" className="flex items-center gap-2">
+           <BookHeart className="w-4 h-4" />
+           Мои генерации
+          </TabsTrigger>
+          <TabsTrigger value="calendar" className="flex items-center gap-2">
+           <CalendarDays className="w-4 h-4" />
+           Календарь
           </TabsTrigger>
           <TabsTrigger value="subscription" className="flex items-center gap-2">
             <CreditCard className="w-4 h-4" />
@@ -231,6 +255,72 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
         </TabsContent>
+
+        <TabsContent value="generations" className="mt-6">
+         <Card>
+           <CardHeader>
+             <CardTitle className="flex items-center gap-2">
+               <BookHeart className="w-5 h-5" />
+               Мои генерации
+             </CardTitle>
+             <CardDescription>
+               Ваша история созданных поздравлений и открыток.
+             </CardDescription>
+           </CardHeader>
+           <CardContent>
+             <Table>
+               <TableHeader>
+                 <TableRow>
+                   <TableHead>Дата</TableHead>
+                   <TableHead>Тип</TableHead>
+                   <TableHead>Кому</TableHead>
+                   <TableHead>Текст</TableHead>
+                   <TableHead className="w-[100px] text-right">Действия</TableHead>
+                 </TableRow>
+               </TableHeader>
+               <TableBody>
+                 {generatedItems.map((item) => (
+                   <TableRow key={item.id}>
+                     <TableCell>{item.date}</TableCell>
+                     <TableCell><Badge variant="outline">{item.type}</Badge></TableCell>
+                     <TableCell>{item.recipient}</TableCell>
+                     <TableCell className="max-w-xs truncate">{item.text}</TableCell>
+                     <TableCell className="text-right">
+                      <div className="flex items-center justify-end gap-2">
+                        <Button variant="ghost" size="icon" onClick={() => toggleFavorite(item.id)}>
+                          <StarIcon className={`w-4 h-4 ${item.isFavorite ? 'text-yellow-500 fill-yellow-500' : 'text-muted-foreground'}`} />
+                        </Button>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" className="h-8 w-8 p-0">
+                                <span className="sr-only">Открыть меню</span>
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem>
+                                <Eye className="w-4 h-4 mr-2" />
+                                Просмотреть
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Download className="w-4 h-4 mr-2" />
+                                Скачать
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                      </div>
+                     </TableCell>
+                   </TableRow>
+                 ))}
+               </TableBody>
+             </Table>
+           </CardContent>
+         </Card>
+       </TabsContent>
+
+        <TabsContent value="calendar" className="mt-6">
+         <EventCalendar />
+       </TabsContent>
 
         <TabsContent value="subscription" className="mt-6">
           <Card>

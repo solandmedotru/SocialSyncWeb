@@ -9,20 +9,20 @@ const footerLinks = {
   product: [
     { label: "Функции", href: "/#features" },
     { label: "Цены", href: "/pricing" },
-    { label: "Шаблоны", href: "/templates" },
-    { label: "API", href: "/api" },
+    // { label: "Шаблоны", href: "/templates" },
+    // { label: "API", href: "/api" },
   ],
   company: [
     { label: "О нас", href: "/about" },
-    { label: "Блог", href: "/blog" },
-    { label: "Карьера", href: "/careers" },
-    { label: "Пресса", href: "/press" },
+    // { label: "Блог", href: "/blog" },
+    // { label: "Карьера", href: "/careers" },
+    // { label: "Пресса", href: "/press" },
   ],
   support: [
-    { label: "Помощь", href: "/help" },
+    // { label: "Помощь", href: "/help" },
     { label: "Контакты", href: "/contact" },
-    { label: "Статус", href: "/status" },
-    { label: "FAQ", href: "/faq" },
+    // { label: "Статус", href: "/status" },
+    // { label: "FAQ", href: "/faq" },
   ],
   legal: [
     { label: "Политика конфиденциальности", href: "/privacy" },
